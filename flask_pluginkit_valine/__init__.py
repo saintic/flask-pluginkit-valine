@@ -46,8 +46,8 @@ class ValineCommentApi(object):
 
     def _set_app_info(self):
         """Valine需要LeanCloud应用的APP ID 和 APP Key，参考https://valine.js.org/quickstart.html"""
-        g.valine_appId = current_app.config["PLUGINKIT_VALINE_APPID"]
-        g.valine_appKey = current_app.config["PLUGINKIT_VALINE_APPKEY"]
+        g.valine_appId = current_app.config.get("PLUGINKIT_VALINE_APPID")
+        g.valine_appKey = current_app.config.get("PLUGINKIT_VALINE_APPKEY")
         g.valine_placeholder = current_app.config.get("PLUGINKIT_VALINE_PLACEHOLDER")
 
     def register_hep(self):
