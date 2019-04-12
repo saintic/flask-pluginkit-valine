@@ -1,0 +1,15 @@
+<!--valine评论系统-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript">
+new Valine({
+    el: '#valine-comments' ,
+    appId: '{{ g.valine_appId }}',
+    appKey: '{{ g.valine_appKey }}',
+    path: window.location.href,
+    notify:false,
+    verify:false,
+    avatar:'',
+    placeholder: '{{ g.valine_placeholder or "老司机来一发吧 O(∩_∩)O~~" }}'
+});
+</script>
