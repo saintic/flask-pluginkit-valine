@@ -17,6 +17,17 @@ Valine评论插件
 
     - PLUGINKIT_VALINE_PLACEHOLDER：可选，评论框中提示信息
 
+    - 上述三项配置也可以不设置，转而放到配置文件中，会读取项目根目录下config.py中PLUGINS配置段（dict）下的Valine配置（dict），config.py示例：
+        ```python
+        PLUGINS = {
+           "Valine": {
+               "PLUGINKIT_VALINE_APPID": "xxx",
+               "PLUGINKIT_VALINE_APPKEY": "xxx",
+               "PLUGINKIT_VALINE_PLACEHOLDER": "xxx"
+            }
+        }
+        ```
+
 - 模板配置：
 
     - 在需要显示评论的地方引用：     `{{ emit_tep("valine_content") }}`

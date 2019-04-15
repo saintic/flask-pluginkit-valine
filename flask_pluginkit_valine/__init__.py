@@ -12,6 +12,10 @@
 #: Importing these two modules is the first and must be done.
 #: 首先导入这两个必须模块
 from __future__ import absolute_import
+try:
+    from config import PLUGINS
+except ImportError:
+    PLUGINS = {}
 #: Import the other modules here, and if it's your own module, use the relative Import. eg: from .lib import Lib
 #: 在这里导入其他模块, 如果有自定义包目录, 使用相对导入, 如: from .lib import Lib
 from flask import g, current_app
@@ -26,7 +30,7 @@ __description__ = "Valine是一款快速、简洁且高效的无后端评论系�
 __author__      = "Mr.tao <staugur@saintic.com>"
 #: Plugin Version
 #: 插件版本
-__version__     = "0.1.0"
+__version__     = "0.1.1"
 #: Plugin Url
 #: 插件主页
 __url__         = "https://github.com/flask-pluginkit/flask-pluginkit-valine"
@@ -46,9 +50,9 @@ class ValineCommentApi(object):
 
     def _set_app_info(self):
         """Valine需要LeanCloud应用的APP ID 和 APP Key，参考https://valine.js.org/quickstart.html"""
-        g.valine_appId = current_app.config.get("PLUGINKIT_VALINE_APPID")
-        g.valine_appKey = current_app.config.get("PLUGINKIT_VALINE_APPKEY")
-        g.valine_placeholder = current_app.config.get("PLUGINKIT_VALINE_PLACEHOLDER")
+        g.valine_appId = current_app.config.get("PLUGINKIT_VALINE_APPID") or PLUGINS.get("Valine", {}).get("PLUGINKIT_VALINE_APPID")
+        g.valine_appKey = current_app.config.get("PLUGINKIT_VALINE_APPKEY") or PLUGINS.get("Valine", {}).get("PLUGINKIT_VALINE_APPKEY")
+        g.valine_placeholder = current_app.config.get("PLUGINKIT_VALINE_PLACEHOLDER") or PLUGINS.get("Valine", {}).get("PLUGINKIT_VALINE_PLACEHOLDER")
 
     def register_hep(self):
         return dict(before_request_hook=self._set_app_info)
