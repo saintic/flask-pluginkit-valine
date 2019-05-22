@@ -37,3 +37,9 @@ Valine评论插件
 ### 示例
 
 `python demo.py`
+
+### 周边
+
+一个小脚本，https://github.com/staugur/scripts/tree/master/valine_comment_reminder
+
+这是针对`Valine`评论系统的小功能，用以获取系统中的新增评论，并发送提醒给管理员。
