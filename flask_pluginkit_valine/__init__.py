@@ -59,3 +59,10 @@ class ValineCommentApi(object):
 
     def register_tep(self):
         return {"valine_content": "valine/content.html", "valine_script": "valine/script.html"}
+
+#: 兼容新版Flask-PluginKit
+def register():
+    return dict(
+        hep=dict(before_request=ValineCommentApi()._set_app_info),
+        tep={"valine_content": "valine/content.html", "valine_script": "valine/script.html"}
+    )
